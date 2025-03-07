@@ -53,7 +53,7 @@ test: $(TARGET)
 package:
 	sudo apt update
 	sudo apt install -y debhelper dh-make build-essential
-	dh_make --native -s -p bubblesort_1.0
+	dh_make --native -s -p bubblesort_1.0 -y
 	dpkg-buildpackage -us -uc
 
 rebuild: 

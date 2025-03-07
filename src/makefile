@@ -51,8 +51,8 @@ test: $(TARGET)
 	@echo "3\n42\n-3.3\n1.0\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid input" && echo "PASSED\n" || echo : "FAILED"
 
 package:
-	sudo apt update
-	sudo apt install -y debhelper dh-make build-essential
+	sudo apt-get update
+	sudo apt-get install -y debhelper dh-make build-essential
 	dh_make --native -s -p bubblesort_1.0 -y
 	dpkg-buildpackage -us -uc
 

@@ -12,7 +12,7 @@ $(TARGET): $(SRC)
 
 clean: 
 	rm -f $(BINDIR)/$(TARGET)
-	rm -r $(CURDIR)/../usr
+	rm -r $(CURDIR)/../../usr
 
 test: $(TARGET)
 	@echo "\n\n\t\tRunning tests"

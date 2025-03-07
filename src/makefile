@@ -50,5 +50,10 @@ test: $(TARGET)
 	@echo "Test 10. Array with non-integers"
 	@echo "3\n42\n-3.3\n1.0\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid input" && echo " PASSED" || echo : "FAILED"
 
+package:
+	sudo apt install -y debhelper dh-make build-essential
+	dh_make --native -s -p -y bubbleSort
+	dpkg-buildpackage -us -uc
+
 rebuild: 
 	clean all

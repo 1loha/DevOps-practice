@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99 -O2
 TARGET = bubbleSort
-SRC = bubbleSort.c
+SRC = src/bubbleSort.c
 BINDIR = $(CURDIR)/../../usr/bin
 
 all: $(TARGET)

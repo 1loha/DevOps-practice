@@ -10,9 +10,6 @@ $(TARGET): $(SRC)
 	mkdir -p $(BINDIR)
 	$(CC) $(CFLAGS) -o $(BINDIR)/$(TARGET) $(SRC)
 
-clean: 
-	rm -f $(BINDIR)/$(TARGET)
-	rm -r $(CURDIR)/../../usr
 
 test: $(TARGET)
 	@echo "\n\n\t\tRunning tests"
@@ -55,6 +52,10 @@ package:
 	sudo apt-get install -y debhelper dh-make build-essential
 	dh_make --native -s -p bubblesort_1.0 -y
 	dpkg-buildpackage -us -uc
+
+clean: 
+	rm -f $(BINDIR)/$(TARGET)
+	rm -r $(CURDIR)/../../usr
 
 rebuild: 
 	clean all

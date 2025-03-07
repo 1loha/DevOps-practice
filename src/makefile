@@ -1,8 +1,3 @@
-CHECK_COMPILER := $(shell which gcc)
-ifeq ($(CHECK_COMPILER),)
-	sudo apt intall git
-endif
-
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99 -O2
 TARGET = bubbleSort
@@ -54,9 +49,6 @@ test: $(TARGET)
 
 	@echo "Test 10. Array with non-integers"
 	@echo "3\n42\n-3.3\n1.0\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid input" && echo " PASSED" || echo : "FAILED"
-
-clean:
-	rm -f &(BINDIR)/
 
 rebuild: 
 	clean all

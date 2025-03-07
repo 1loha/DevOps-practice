@@ -16,43 +16,44 @@ clean:
 
 test: $(TARGET)
 	@echo "\n\n\t\tRunning tests"
-	@echo "\n\tСhecking the array size"
+	@echo "\n\tСhecking the array size\n"
 
 	@echo "Test 1. positive number"
-	@echo "3\n3\n1\n2\n" | $(BINDIR)/$(TARGET) | grep -q "1 2 3" && echo "PASSED" || echo "FAILED"
+	@echo "3\n3\n1\n2\n" | $(BINDIR)/$(TARGET) | grep -q "1 2 3" && echo "PASSED\n" || echo "FAILED"
 
 	@echo "Test 2. Invalid size (negative number)"
-	@echo "-5\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid size" && echo "PASSED" || echo "FAILED"
+	@echo "-5\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid size" && echo "PASSED\n" || echo "FAILED"
 
 	@echo "Test 3. Invalid size (not an integer)"
-	@echo "4.5\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid size" && echo "PASSED" || echo "FAILED"
+	@echo "4.5\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid size" && echo "PASSED\n" || echo "FAILED"
 
 	@echo "Test 4. Invalid size (zero)"
-	@echo "0\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid size" && echo "PASSED" || echo "FAILED"
+	@echo "0\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid size" && echo "PASSED\n" || echo "FAILED"
 
 	@echo "Test 5. Invalid input (non-numeric)"
-	@echo "abc\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid size" && echo "PASSED" || echo "FAILED"
+	@echo "abc\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid size" && echo "PASSED\n" || echo "FAILED"
 
-	@echo "\n\tСhecking array elements"
+	@echo "\n\tСhecking array elements\n"
 
 	@echo "Test 6. array with a positive number"
-	@echo "3\n24\n12\n25\n" | $(BINDIR)/$(TARGET) | grep -q "12 24 25" && echo "PASSED" || echo "FAILED"
+	@echo "3\n24\n12\n25\n" | $(BINDIR)/$(TARGET) | grep -q "12 24 25" && echo "PASSED\n" || echo "FAILED"
 
 	@echo "Test 7. array with an zero"
-	@echo "3\n0\n2\n0\n" | $(BINDIR)/$(TARGET) | grep -q "0 0 2" && echo "PASSED" || echo "FAILED"
+	@echo "3\n0\n2\n0\n" | $(BINDIR)/$(TARGET) | grep -q "0 0 2" && echo "PASSED\n" || echo "FAILED"
 
 	@echo "Test 8. array with a negative numbers"
-	@echo "4\n3\n-1\n2\n-3\n" | $(BINDIR)/$(TARGET) | grep -qe "-3 -1 2 3" && echo "PASSED" || echo "FAILED"
+	@echo "4\n3\n-1\n2\n-3\n" | $(BINDIR)/$(TARGET) | grep -qe "-3 -1 2 3" && echo "PASSED\n" || echo "FAILED"
 
 	@echo "Test 9. Array with non-numeric elements"
-	@echo "5\n3\n1\n2\ndns\n1\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid input" && echo "PASSED" || echo "FAILED"
+	@echo "5\n3\n1\n2\ndns\n1\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid input" && echo "PASSED\n" || echo "FAILED"
 
 	@echo "Test 10. Array with non-integers"
-	@echo "3\n42\n-3.3\n1.0\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid input" && echo " PASSED" || echo : "FAILED"
+	@echo "3\n42\n-3.3\n1.0\n" | $(BINDIR)/$(TARGET) 2>&1 | grep -q "Invalid input" && echo "PASSED\n" || echo : "FAILED"
 
 package:
+	sudo apt update
 	sudo apt install -y debhelper dh-make build-essential
-	dh_make --native -s -p -y bubbleSort
+	dh_make --native -s -p bubblesort_1.0
 	dpkg-buildpackage -us -uc
 
 rebuild: 

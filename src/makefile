@@ -55,7 +55,7 @@ package:
 
 clean: 
 	rm -f $(BINDIR)/$(TARGET)
-	rm -r $(CURDIR)/../../usr
+	
 
 rebuild: 
 	clean all

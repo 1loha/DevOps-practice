@@ -21,9 +21,9 @@ COPY ./src/bubbleSort.c ./src/makefile /app/
 WORKDIR /app
 
 # Собираем проект
-CMD ["make"]
+RUN make
 
 # Запускаем тесты
-CMD ["make test"]
+RUN make test
 
 CMD ["make package"]

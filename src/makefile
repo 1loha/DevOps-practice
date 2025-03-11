@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c99 -O2
 TARGET = bubbleSort
 SRC = bubbleSort.c
-BINDIR = $(CURDIR)/../../usr/bin
+BINDIR = $(CURDIR)/../usr/bin
 
 all: $(TARGET)
 
@@ -55,7 +55,7 @@ package:
 
 clean: 
 	rm -f $(BINDIR)/$(TARGET)
-	rm -r $(CURDIR)/../../usr
+	
 
 rebuild: 
 	clean all

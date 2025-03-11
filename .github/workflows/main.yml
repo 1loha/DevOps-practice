@@ -34,7 +34,7 @@ jobs:
         run: make package  
       
       - name: Copy .deb package to src
-        run: cp ../bubblesort_1.0_amd64.deb ./bubblesort_1.0_amd64.deb
+        run: mv ./bubblesort_1.0_amd64.deb ./src/
 
       - name: Upload .deb package as artifact
         uses: actions/upload-artifact@v4

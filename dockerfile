@@ -3,6 +3,8 @@ FROM ubuntu:latest
 
 # метаданные
 LABEL maintainer="Ilya <ilya.email@example.com>"
+ENV LOGNAME="root"
+ENV USER="rootuser"
 
 # Установка зависимостей
 RUN apt-get update && \
@@ -20,10 +22,6 @@ COPY ./src/bubbleSort.c ./src/makefile /app/
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Собираем проект
-RUN make
+RUN dpkg -i bubbleSort_1.0_amd64.deb
 
-# Запускаем тесты
-RUN make test
-
-CMD ["make package"]
+CMD ["/usr/bin/bubbleSort"]

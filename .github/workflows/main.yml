@@ -34,7 +34,7 @@ jobs:
         run: make package  
 
       - name: Upload .deb package as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bubblesort-package
           path: ../bubblesort_1.0_amd64.deb

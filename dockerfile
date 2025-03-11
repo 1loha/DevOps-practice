@@ -26,4 +26,4 @@ RUN dh_make --native -s -p bubblesort_1.0 -y
 RUN dpkg-buildpackage -us -uc
 RUN dpkg -i ../bubblesort_1.0_amd64.deb || apt-get install -f -y
 
-CMD ["sh", "-c", "echo -e '3\\n3\\n1\\n2\\n' | /usr/bin/bubbleSort"]
+

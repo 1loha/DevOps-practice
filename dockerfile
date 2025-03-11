@@ -24,6 +24,6 @@ WORKDIR /app
 
 RUN dh_make --native -s -p bubblesort_1.0 -y
 RUN dpkg-buildpackage -us -uc
-RUN sudo dpkg -i bubblesort_1.0_amd64.deb
+RUN dpkg -i ../bubblesort_1.0_amd64.deb || apt-get install -f -y
 
 CMD ["/usr/bin/bubbleSort"]

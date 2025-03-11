@@ -12,6 +12,7 @@ jobs:
         run: make 
 
   RunTest:
+    runs-on: ubuntu-latest  
     needs: RunMake 
     steps:
       - name: Checkout code
@@ -31,3 +32,27 @@ jobs:
       - name: Run Package
         working-directory: ./src
         run: make package  
+
+      - name: Upload .deb package as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: bubblesort-package
+          path: ./src/bubblesort_1.0_amd64.deb
+        
+  Deploy:
+    needs: RunPackage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: bubblesort-package
+
+      - name: Build Docker image
+        run: docker build -t bubblesort-image .
+
+      - name: Run Docker container
+        run: docker run --rm bubblesort-image ./usr/bin/bubblesort

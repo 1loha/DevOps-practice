@@ -22,6 +22,6 @@ COPY ./src/bubbleSort.c ./src/makefile /app/
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-RUN dpkg -i bubbleSort_1.0_amd64.deb
+RUN dpkg -i bubblesort_1.0_amd64.deb
 
 CMD ["/usr/bin/bubbleSort"]

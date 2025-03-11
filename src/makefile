@@ -11,7 +11,7 @@ $(TARGET): $(SRC)
 	$(CC) $(CFLAGS) -o $(BINDIR)/$(TARGET) $(SRC)
 
 
-test: $(TARGET)
+test:
 	@echo "\n\n\t\tRunning tests"
 	@echo "\n\tСhecking the array size\n"
 
